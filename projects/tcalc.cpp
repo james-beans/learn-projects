@@ -31,26 +31,25 @@ int main() {
   cin >> num2;
 
   switch (op) {
-  case '+':
-    result = num1 + num2;
-    cout << "\nResult: " << result << '\n';
-    break;
-  case '-':
-    result = num1 - num2;
-    cout << "\nResult: " << result << '\n';
-    break;
-  case '*':
-    result = num1 * num2;
-    cout << "\nResult: " << result << '\n';
-    break;
-  case '/':
-    result = num1 / num2;
-    cout << "\nResult: " << result << '\n';
-    break;
-  default:
-    cout << "\nThe operator '" << op
-         << "' doesn't count as an accepted operator.\n";
-    return 1;
+    case '+':
+      result = num1 + num2;
+      cout << "\nResult: " << result << '\n';
+      break;
+    case '-':
+      result = num1 - num2;
+      cout << "\nResult: " << result << '\n';
+      break;
+    case '*':
+      result = num1 * num2;
+      cout << "\nResult: " << result << '\n';
+      break;
+    case '/':
+      result = num1 / num2;
+      cout << "\nResult: " << result << '\n';
+      break;
+    default:
+      cout << "\nThe operator '" << op << "' doesn't count as an accepted operator.\n";
+      return 1;
   }
 
   return 0;
