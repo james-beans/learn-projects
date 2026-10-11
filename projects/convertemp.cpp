@@ -1,19 +1,18 @@
 #include <iostream>
 
-using std::string;
-using std::cout;
 using std::cin;
+using std::cout;
+using std::string;
 
-void n() {
-  cout << '\n';
-}
+void n() { cout << '\n'; }
 
 void info() {
   /*
-  * convertemp - A program to convert Fahrenheit (°F) to Celsius (°C).
-  */
+   * convertemp - A program to convert Fahrenheit (°F) to Celsius (°C).
+   */
 
-  cout << "convertemp - A program to convert Fahrenheit (°F) to Celsius (°C).\n\n";
+  cout << "convertemp - A program to convert Fahrenheit (°F) to Celsius "
+          "(°C).\n\n";
 }
 
 int main() {

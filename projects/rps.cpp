@@ -1,125 +1,129 @@
-#include <iostream>
 #include <ctime>
+#include <iostream>
 
-using std::string;
-using std::cout;
 using std::cin;
+using std::cout;
+using std::string;
 
 namespace pr {
-  int num(int a, int b, bool print = false, string end = "\n") {
-    // PUT THIS ONLY AT THE START OF MAIN TO USE:
-    // `srand(time(NULL));`
-    // DO NOT ADD HERE OR ANYWHERE ELSE OTHERWISE
-    // IT WILL CLASH WITH OTHER LIBRARIES/USES OF
-    // THE SAME FUNCTION.
+int num(int a, int b, bool print = false, string end = "\n") {
+  // PUT THIS ONLY AT THE START OF MAIN TO USE:
+  // `srand(time(NULL));`
+  // DO NOT ADD HERE OR ANYWHERE ELSE OTHERWISE
+  // IT WILL CLASH WITH OTHER LIBRARIES/USES OF
+  // THE SAME FUNCTION.
 
-    // Generate random number in range [a, b]
-    //
-    //int res = (rand() % b) + a;
-    int res = (rand() % (b - a + 1)) + a;
+  // Generate random number in range [a, b]
+  //
+  // int res = (rand() % b) + a;
+  int res = (rand() % (b - a + 1)) + a;
 
-    if (print) {
-      cout << res << end;
-    }
-
-    return res;
+  if (print) {
+    cout << res << end;
   }
+
+  return res;
 }
+} // namespace pr
 
 namespace rps {
-  namespace winner {
-    void r(char computer) {
-      if (computer == 'r') {
-        cout << "It's a tie!\n";
-      } else if (computer == 'p') {
-        cout << "You lose!\n";
-      } else {
-        cout << "You win!\n";
-      }
-    }
-
-    void p(char computer) {
-      if (computer == 'p') {
-        cout << "It's a tie!\n";
-      } else if (computer == 's') {
-        cout << "You lose!\n";
-      } else {
-        cout << "You win!\n";
-      }
-    }
-
-    void s(char computer) {
-      if (computer == 's') {
-        cout << "It's a tie!\n";
-      } else if (computer == 'r') {
-        cout << "You lose!\n";
-      } else {
-        cout << "You win!\n";
-      }
-    }
-  }
-
-  char getUserChoice() {
-    char player;
-
-    do {
-      cout << "\n'r' for Rock\n";
-      cout << "'p' for Paper\n";
-      cout << "'s' for Scissors\n";
-
-      cout << "\nYour choice: ";
-      cin >> player;
-    } while (player != 'r' && player != 'p' && player != 's');
-
-    return player;
-  }
-
-  char getComputerChoice() {
-    int num = pr::num(1, 3);
-
-    switch (num) {
-      case 1: return 'r';
-      case 2: return 'p';
-      case 3: return 's';
-      default: return '?';
-    }
-  }
-
-  void showChoice(char choice) {
-    switch (choice) {
-      case 'r':
-        cout << "Rock\n";
-        break;
-      case 'p':
-        cout << "Paper\n";
-        break;
-      case 's':
-        cout << "Scissors\n";
-        break;
-      default:
-        break;
-    }
-  }
-
-  void chooseWinner(char player, char computer) {
-    switch (player) {
-      case 'r':
-        winner::r(computer);
-        break;
-      case 'p':
-        winner::p(computer);
-        break;
-      case 's':
-        winner::s(computer);
-        break;
-    }
+namespace winner {
+void r(char computer) {
+  if (computer == 'r') {
+    cout << "It's a tie!\n";
+  } else if (computer == 'p') {
+    cout << "You lose!\n";
+  } else {
+    cout << "You win!\n";
   }
 }
+
+void p(char computer) {
+  if (computer == 'p') {
+    cout << "It's a tie!\n";
+  } else if (computer == 's') {
+    cout << "You lose!\n";
+  } else {
+    cout << "You win!\n";
+  }
+}
+
+void s(char computer) {
+  if (computer == 's') {
+    cout << "It's a tie!\n";
+  } else if (computer == 'r') {
+    cout << "You lose!\n";
+  } else {
+    cout << "You win!\n";
+  }
+}
+} // namespace winner
+
+char getUserChoice() {
+  char player;
+
+  do {
+    cout << "\n'r' for Rock\n";
+    cout << "'p' for Paper\n";
+    cout << "'s' for Scissors\n";
+
+    cout << "\nYour choice: ";
+    cin >> player;
+  } while (player != 'r' && player != 'p' && player != 's');
+
+  return player;
+}
+
+char getComputerChoice() {
+  int num = pr::num(1, 3);
+
+  switch (num) {
+  case 1:
+    return 'r';
+  case 2:
+    return 'p';
+  case 3:
+    return 's';
+  default:
+    return '?';
+  }
+}
+
+void showChoice(char choice) {
+  switch (choice) {
+  case 'r':
+    cout << "Rock\n";
+    break;
+  case 'p':
+    cout << "Paper\n";
+    break;
+  case 's':
+    cout << "Scissors\n";
+    break;
+  default:
+    break;
+  }
+}
+
+void chooseWinner(char player, char computer) {
+  switch (player) {
+  case 'r':
+    winner::r(computer);
+    break;
+  case 'p':
+    winner::p(computer);
+    break;
+  case 's':
+    winner::s(computer);
+    break;
+  }
+}
+} // namespace rps
 
 void info() {
   /*
-  * RPS - A Rock Paper Scissors written for the terminal.
-  */
+   * RPS - A Rock Paper Scissors written for the terminal.
+   */
 
   cout << "RPS - A Rock Paper Scissors written for the terminal.\n";
 }
@@ -149,6 +153,4 @@ int main() {
   return 0;
 }
 
-void n() {
-  cout << '\n';
-}
+void n() { cout << '\n'; }

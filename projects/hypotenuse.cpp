@@ -1,25 +1,23 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
-using std::string;
-using std::cout;
 using std::cin;
+using std::cout;
+using std::string;
 
 void info() {
   /*
-  * Right angled triangle
-  * Solve for hypotenuse
-  *
-  * `c = sqrt(a^2 + b^2)`
-  */
+   * Right angled triangle
+   * Solve for hypotenuse
+   *
+   * `c = sqrt(a^2 + b^2)`
+   */
 
   cout << "Right angled triangle\n";
   cout << "`c = sqrt(a^2 + b^2)`\n\n";
 }
 
-void n() {
-  cout << '\n';
-}
+void n() { cout << '\n'; }
 
 int main() {
   info();
@@ -36,7 +34,7 @@ int main() {
 
   n();
 
-  //c = sqrt(pow(a, 2) + pow(b, 2));
+  // c = sqrt(pow(a, 2) + pow(b, 2));
   a = pow(a, 2);
   b = pow(b, 2);
   c = sqrt(a + b);

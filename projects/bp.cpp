@@ -1,72 +1,74 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <limits>
 
+using std::cin;
+using std::cout;
+using std::fixed;
 using std::setprecision;
 using std::string;
-using std::fixed;
-using std::cout;
-using std::cin;
 
 namespace b {
-  void info() {
-    /*
-    * BP - A Banking program in the terminal.
-    */
+void info() {
+  /*
+   * BP - A Banking program in the terminal.
+   */
 
-    cout << "BP - A Banking program in the terminal.\n\n";
+  cout << "BP - A Banking program in the terminal.\n\n";
+}
+
+void showBalance(double balance) {
+  cout << "Your balance is: $" << setprecision(2) << fixed << balance << "\n\n";
+}
+
+double deposit() {
+  double amount = 0;
+
+  cout << "Enter amount to be deposited: ";
+
+  if (!(cin >> amount)) {
+    cout << "Invalid input. Please enter a valid number.\n\n";
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(),
+               '\n'); // Discard bad input
+    return 0;
   }
 
-  void showBalance(double balance) {
-    cout << "Your balance is: $" << setprecision(2) << fixed << balance << "\n\n";
-  }
-
-  double deposit() {
-    double amount = 0;
-
-    cout << "Enter amount to be deposited: ";
-
-    if (!(cin >> amount)) {
-      cout << "Invalid input. Please enter a valid number.\n\n";
-      cin.clear();
-      cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard bad input
-      return 0;
-    }
-
-    if (amount > 0) {
-      return amount;
-    } else {
-      cout << "$" << amount << " is not a valid amount.\n\n";
-      return 0;
-    }
-  }
-
-  double withDraw(double balance) {
-    double amount = 0;
-
-    cout << "Enter amount to be withdrawn: ";
-    cin >> amount;
-
-    if (!(cin >> amount)) {
-      cout << "Invalid input. Please enter a valid number.\n\n";
-      cin.clear();
-      cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard bad input
-      return 0;
-    }
-
-    if (amount > 0) {
-      if (amount <= balance) {
-        return amount;
-      } else {
-        cout << "You have insufficient funds to do that.\n\n";
-        return 0;
-      }
-    } else {
-      cout << "$" << amount << " is not a valid withdrawal amount.\n\n";
-      return 0;
-    }
+  if (amount > 0) {
+    return amount;
+  } else {
+    cout << "$" << amount << " is not a valid amount.\n\n";
+    return 0;
   }
 }
+
+double withDraw(double balance) {
+  double amount = 0;
+
+  cout << "Enter amount to be withdrawn: ";
+  cin >> amount;
+
+  if (!(cin >> amount)) {
+    cout << "Invalid input. Please enter a valid number.\n\n";
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(),
+               '\n'); // Discard bad input
+    return 0;
+  }
+
+  if (amount > 0) {
+    if (amount <= balance) {
+      return amount;
+    } else {
+      cout << "You have insufficient funds to do that.\n\n";
+      return 0;
+    }
+  } else {
+    cout << "$" << amount << " is not a valid withdrawal amount.\n\n";
+    return 0;
+  }
+}
+} // namespace b
 
 void n();
 
@@ -91,42 +93,41 @@ int main() {
     if (!(cin >> choice)) {
       cout << "Invalid selection. Please enter a number (1-4).\n";
       cin.clear();
-      cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard bad input
-      choice = 0; // Set to a default value
+      cin.ignore(std::numeric_limits<std::streamsize>::max(),
+                 '\n'); // Discard bad input
+      choice = 0;       // Set to a default value
       n();
       continue; // Skip the switch and re-prompt the menu
     }
 
     switch (choice) {
-      case 1:
+    case 1:
+      b::showBalance(balance);
+      break;
+    case 2:
+      depositAmount = b::deposit();
+      if (depositAmount > 0) {
+        balance += depositAmount;
         b::showBalance(balance);
-        break;
-      case 2:
-        depositAmount = b::deposit();
-        if (depositAmount > 0) {
-          balance += depositAmount;
-          b::showBalance(balance);
-        }
-        break;
-      case 3:
-        withdrawAmount = b::withDraw(balance);
-        if (withdrawAmount > 0) {
-          balance -= withdrawAmount;
-          b::showBalance(balance);
-        }
-        break;
-      case 4:
-        cout << "\nThanks for visiting!\n";
-        break;
-      default:
-        cout << "Invalid choice\n";
-        break;
+      }
+      break;
+    case 3:
+      withdrawAmount = b::withDraw(balance);
+      if (withdrawAmount > 0) {
+        balance -= withdrawAmount;
+        b::showBalance(balance);
+      }
+      break;
+    case 4:
+      cout << "\nThanks for visiting!\n";
+      break;
+    default:
+      cout << "Invalid choice\n";
+      break;
     }
   } while (choice != 4);
 
   return 0;
 }
 
-void n() {
-  cout << '\n';
-}
+void n() { cout << '\n'; }

@@ -1,19 +1,19 @@
 #include <iostream>
 
-using std::string;
-using std::cout;
 using std::cin;
+using std::cout;
+using std::string;
 
-void n() {
-  cout << '\n';
-}
+void n() { cout << '\n'; }
 
 void info() {
   /*
-  * rectangleloop - A program to make a rectangle out of characters and visualize it in math form.
-  */
+   * rectangleloop - A program to make a rectangle out of characters and
+   * visualize it in math form.
+   */
 
-  cout << "rectangleloop - A program to make a rectangle out of characters and visualize it in math form.\n\n";
+  cout << "rectangleloop - A program to make a rectangle out of characters and "
+          "visualize it in math form.\n\n";
 }
 
 int main() {
