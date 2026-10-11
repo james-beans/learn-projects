@@ -33,6 +33,9 @@ compile() {
   # projects/ccv.cpp
   clang++ -std=c++23 projects/ccv.cpp -o dist/ccv
 
+  # projects/ttt.cpp
+  clang++ -std=c++23 projects/ttt.cpp -o dist/ttt
+
   n && echo "Compiled all programs." && n
 }
 
