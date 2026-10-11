@@ -9,23 +9,22 @@ namespace ccv {
   void info() {
     /*
      * CCV - A credit card validator.
-     * Credits to: https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
+     * Credits to:
+     * https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
      */
 
     cout << "CCV - A credit card validator.\n";
-    cout << "Credits to: https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm\n\n";
+    cout << "Credits to: "
+            "https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/"
+            "credit_card_numbers.htm\n\n";
   }
 
-  int getDigit(const int number) {
-    return number % 10 + (number / 10 % 10);
-  }
+  int getDigit(const int number) { return number % 10 + (number / 10 % 10); }
 
   int sumOddDigits(const string cardNumber) {
     int sum = 0;
 
-    for (int i = cardNumber.size() - 1; i >= 0; i -= 2) {
-      sum += cardNumber[i] - '0';
-    }
+    for (int i = cardNumber.size() - 1; i >= 0; i -= 2) { sum += cardNumber[i] - '0'; }
 
     return sum;
   }
