@@ -1,5 +1,5 @@
-#include <iostream>
 #include <ctime>
+#include <iostream>
 
 using std::string;
 
@@ -17,19 +17,17 @@ namespace ttt {
 
   void drawBoard(char* spaces) {
     cout << "\n     |     |     \n";
-    cout << "  " << spaces[0] << "  |  " << spaces[1] <<"  |  " << spaces[2] << "  \n";
+    cout << "  " << spaces[0] << "  |  " << spaces[1] << "  |  " << spaces[2] << "  \n";
     cout << "_____|_____|_____\n";
     cout << "     |     |     \n";
-    cout << "  " << spaces[3] << "  |  " << spaces[4] <<"  |  " << spaces[5] << "  \n";
+    cout << "  " << spaces[3] << "  |  " << spaces[4] << "  |  " << spaces[5] << "  \n";
     cout << "_____|_____|_____\n";
     cout << "     |     |     \n";
-    cout << "  " << spaces[6] << "  |  " << spaces[7] <<"  |  " << spaces[8] << "  \n";
+    cout << "  " << spaces[6] << "  |  " << spaces[7] << "  |  " << spaces[8] << "  \n";
     cout << "     |     |     \n\n";
   }
 
-  bool isTaken(char* spaces, int number) {
-    return spaces[number] != (number + '1');
-  }
+  bool isTaken(char* spaces, int number) { return spaces[number] != (number + '1'); }
 
   void playerMove(char* spaces, char player) {
     int number;
@@ -43,11 +41,11 @@ namespace ttt {
       if (number < 0 || number > 8) {
         cout << "Invalid input! Please enter a number between 1 and 9.\n";
 
-      // Check if the spot is already taken (if it's no longer its original number)
+        // Check if the spot is already taken (if it's no longer its original number)
       } else if (isTaken(spaces, number)) {
         cout << "That spot is already taken!\n";
 
-      // Otherwise, valid move
+        // Otherwise, valid move
       } else {
         spaces[number] = player;
         break;
@@ -123,9 +121,7 @@ int main() {
 
   // Fill in the spaces with placeholders 1-9
   // as a guide
-  for (int i = 0; i < SIZE; i++) {
-    spaces[i] = '1' + i;
-  }
+  for (int i = 0; i < SIZE; i++) { spaces[i] = '1' + i; }
 
   ttt::drawBoard(spaces);
 
