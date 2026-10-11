@@ -1,1 +1,5 @@
 dist
+
+# Code editors:
+.idea
+.vscode

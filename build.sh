@@ -30,6 +30,9 @@ compile() {
   # projects/tcalc.cpp
   clang++ -std=c++23 projects/tcalc.cpp -o dist/tcalc
 
+  # projects/ccv.cpp
+  clang++ -std=c++23 projects/ccv.cpp -o dist/ccv
+
   n && echo "Compiled all programs." && n
 }
 

@@ -17,3 +17,4 @@
 - [rps.cpp](./projects/rps.cpp)
 - [tcalc.cpp](./projects/tcalc.cpp)
 - [qg.cpp](./projects/qg.cpp)
+- [ccv.cpp](./projects/ccv.cpp)
