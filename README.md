@@ -1,5 +1,5 @@
 # learn-projects
-> Projects made for me to learn more and actually understand software
+> Projects made for me to learn more and actually understand software.
 
 > [!NOTE]
 > This does contain some projects from the old [james-beans/learn](https://github.com/james-beans/learn) repository. New projects will also be added here. We will not sort projects by language though.
