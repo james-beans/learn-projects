@@ -13,49 +13,46 @@
 #endif
 
 #ifndef DA_HPP
-#define DA_HPP
+  #define DA_HPP
 
-#ifndef _SIZE_T_DEFINED
-#define _SIZE_T_DEFINED
-  typedef decltype(sizeof(0)) size_t;
-#endif // _SIZE_T_DEFINED
+  #ifndef _SIZE_T_DEFINED
+    #define _SIZE_T_DEFINED
+typedef decltype(sizeof(0)) size_t;
+  #endif // _SIZE_T_DEFINED
 
-#if __has_include(<efi.h>)
-  #include <efi.h>
+  #if __has_include(<efi.h>)
+    #include <efi.h>
 
-  // Expected global system table provided by user's GNU EFI environment
-  extern EFI_SYSTEM_TABLE* SystemTable;
+// Expected global system table provided by user's GNU EFI environment
+extern EFI_SYSTEM_TABLE* SystemTable;
 
-  extern "C" {
-    inline void* __da_uefi_allocate(size_t size) {
-      if (size == 0) { size = 1; }
-      void* buffer = nullptr;
+extern "C" {
+inline void* __da_uefi_allocate(size_t size) {
+  if (size == 0) { size = 1; }
+  void* buffer = nullptr;
 
-      if (SystemTable && SystemTable->BootServices) {
-        if (EFI_ERROR(SystemTable->BootServices->AllocatePool(EfiLoaderData, size, &buffer))) {
-          return nullptr;
-        }
-      }
-      return buffer;
-    }
-
-    inline void __da_uefi_deallocate(void* ptr) {
-      if (ptr && SystemTable && SystemTable->BootServices) {
-        SystemTable->BootServices->FreePool(ptr);
-      }
+  if (SystemTable && SystemTable->BootServices) {
+    if (EFI_ERROR(SystemTable->BootServices->AllocatePool(EfiLoaderData, size, &buffer))) {
+      return nullptr;
     }
   }
+  return buffer;
+}
 
-  inline void* operator new(size_t size)   { return __da_uefi_allocate(size); }
-  inline void* operator new[](size_t size) { return __da_uefi_allocate(size); }
-  inline void  operator delete(void* ptr)   noexcept { return __da_uefi_deallocate(ptr); }
-  inline void  operator delete[](void* ptr) noexcept { return __da_uefi_deallocate(ptr); }
-  inline void  operator delete(void* ptr, size_t)   noexcept { return __da_uefi_deallocate(ptr); }
-  inline void  operator delete[](void* ptr, size_t) noexcept { return __da_uefi_deallocate(ptr); }
-#endif // __has_include(<efi.h>)
+inline void __da_uefi_deallocate(void* ptr) {
+  if (ptr && SystemTable && SystemTable->BootServices) { SystemTable->BootServices->FreePool(ptr); }
+}
+}
 
-template <typename T, size_t N = 0>
-class da {
+inline void* operator new(size_t size) { return __da_uefi_allocate(size); }
+inline void* operator new[](size_t size) { return __da_uefi_allocate(size); }
+inline void operator delete(void* ptr) noexcept { return __da_uefi_deallocate(ptr); }
+inline void operator delete[](void* ptr) noexcept { return __da_uefi_deallocate(ptr); }
+inline void operator delete(void* ptr, size_t) noexcept { return __da_uefi_deallocate(ptr); }
+inline void operator delete[](void* ptr, size_t) noexcept { return __da_uefi_deallocate(ptr); }
+  #endif // __has_include(<efi.h>)
+
+template <typename T, size_t N = 0> class da {
 private:
   T* a_data;                // Pointer to current active storage (stack buffer or heap)
   int a_size;               // Number of elements currently stored
@@ -67,13 +64,9 @@ private:
   alignas(T) char a_local_buffer[N * sizeof(T)];
 
   // Private helper to cast the raw local buffer into a typed T pointer
-  T* m_getLocalBuffer() {
-    return reinterpret_cast<T*>(a_local_buffer);
-  }
+  T* m_getLocalBuffer() { return reinterpret_cast<T*>(a_local_buffer); }
 
-  const T* m_getLocalBuffer() const {
-    return reinterpret_cast<const T*>(a_local_buffer);
-  }
+  const T* m_getLocalBuffer() const { return reinterpret_cast<const T*>(a_local_buffer); }
 
 public:
   // Sets up either stack SBO storage or heap allocation
@@ -96,9 +89,7 @@ public:
 
   // Only frees memory via `delete[]` if data was allocated on the heap
   ~da() {
-    if (a_is_heap_allocated) {
-      delete[] a_data;
-    }
+    if (a_is_heap_allocated) { delete[] a_data; }
   }
 
   int m_getSize() const { return a_size; }
@@ -111,14 +102,10 @@ public:
       T* new_data = new T[new_capacity]; // Always migrate or grow onto the heap on resize
 
       // Copy existing elements over to the new buffer
-      for (int i = 0; i < a_size; i++) {
-        new_data[i] = a_data[i];
-      }
+      for (int i = 0; i < a_size; i++) { new_data[i] = a_data[i]; }
 
       // Clean up old memory only if it was previously on the heap
-      if (a_is_heap_allocated) {
-        delete[] a_data;
-      }
+      if (a_is_heap_allocated) { delete[] a_data; }
 
       a_data = new_data;
       a_capacity = new_capacity;
@@ -143,13 +130,9 @@ public:
       int new_capacity = a_capacity * 2;
       T* new_data = new T[new_capacity];
 
-      for (int i = 0; i < a_size; i++) {
-        new_data[i] = a_data[i];
-      }
+      for (int i = 0; i < a_size; i++) { new_data[i] = a_data[i]; }
 
-      if (a_is_heap_allocated) {
-        delete[] a_data;
-      }
+      if (a_is_heap_allocated) { delete[] a_data; }
 
       a_data = new_data;
       a_capacity = new_capacity;

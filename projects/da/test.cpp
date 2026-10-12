@@ -14,7 +14,7 @@ int main() {
 
   // Check size and capacity
   int size = numbers.m_getSize();
-  int cap  = numbers.m_getCapacity();
+  int cap = numbers.m_getCapacity();
 
   std::cout << size << '/' << cap << '\n';
 
