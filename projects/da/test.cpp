@@ -1,21 +1,25 @@
-#include "da.hpp"
-
+#include <da.hpp>
 #include <iostream>
 
-using std::cout;
-
 int main() {
-  da<int> array(4);
+  // Create a dynamic array of integers with an SBO local buffer of 8 elements
+  da<int, 8> numbers;
 
-  cout << array.m_getSize() << '/' << array.m_getCapacity() << "\n";
+  // Push values
+  numbers.m_push(10);
+  numbers.m_push(20);
 
-  array.m_push(255);
-  array.m_push(250);
-  array.m_push(245);
-  array.m_push(240);
-  array.m_insert(2, 4);
+  // Insert at a specific index
+  numbers.m_insert(1, 15);
 
-  cout << array.m_getSize() << '/' << array.m_getCapacity() << "\n";
+  // Check size and capacity
+  int size = numbers.m_getSize();
+  int cap  = numbers.m_getCapacity();
+
+  std::cout << size << '/' << cap << '\n';
+
+  // Pop from the back
+  numbers.m_pop();
 
   return 0;
 }

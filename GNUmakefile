@@ -64,4 +64,4 @@ dist/ttt: projects/ttt.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 dist/da-test: projects/da/test.cpp
-	$(CXX) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CXXFLAGS) $< -Iprojects/da -o $@
