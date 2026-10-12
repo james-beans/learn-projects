@@ -12,7 +12,8 @@ TARGETS = \
 	dist/rps \
 	dist/tcalc \
 	dist/ccv \
-	dist/ttt
+	dist/ttt \
+	dist/da-test
 
 .PHONY: all clean directories
 
@@ -60,4 +61,7 @@ dist/ccv: projects/ccv.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 dist/ttt: projects/ttt.cpp
+	$(CXX) $(CXXFLAGS) $< -o $@
+
+dist/da-test: projects/da/test.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
