@@ -75,19 +75,19 @@ namespace ttt {
 
     for (char mark : marks) {
       if (
-          // Check rows
-          checkLine(spaces[0], spaces[1], spaces[2], mark) ||
-          checkLine(spaces[3], spaces[4], spaces[5], mark) ||
-          checkLine(spaces[6], spaces[7], spaces[8], mark) ||
+        // Check rows
+        checkLine(spaces[0], spaces[1], spaces[2], mark) ||
+        checkLine(spaces[3], spaces[4], spaces[5], mark) ||
+        checkLine(spaces[6], spaces[7], spaces[8], mark) ||
 
-          // Check columns
-          checkLine(spaces[0], spaces[3], spaces[6], mark) ||
-          checkLine(spaces[1], spaces[4], spaces[7], mark) ||
-          checkLine(spaces[2], spaces[5], spaces[8], mark) ||
+        // Check columns
+        checkLine(spaces[0], spaces[3], spaces[6], mark) ||
+        checkLine(spaces[1], spaces[4], spaces[7], mark) ||
+        checkLine(spaces[2], spaces[5], spaces[8], mark) ||
 
-          // Check diagonals
-          checkLine(spaces[0], spaces[4], spaces[8], mark) ||
-          checkLine(spaces[2], spaces[4], spaces[6], mark)) {
+        // Check diagonals
+        checkLine(spaces[0], spaces[4], spaces[8], mark) ||
+        checkLine(spaces[2], spaces[4], spaces[6], mark)) {
 
         return mark;
       }

@@ -76,44 +76,27 @@ namespace rps {
     int num = pr::num(1, 3);
 
     switch (num) {
-      case 1:
-        return 'r';
-      case 2:
-        return 'p';
-      case 3:
-        return 's';
-      default:
-        return '?';
+    case 1: return 'r';
+    case 2: return 'p';
+    case 3: return 's';
+    default: return '?';
     }
   }
 
   void showChoice(char choice) {
     switch (choice) {
-      case 'r':
-        cout << "Rock\n";
-        break;
-      case 'p':
-        cout << "Paper\n";
-        break;
-      case 's':
-        cout << "Scissors\n";
-        break;
-      default:
-        break;
+    case 'r': cout << "Rock\n"; break;
+    case 'p': cout << "Paper\n"; break;
+    case 's': cout << "Scissors\n"; break;
+    default: break;
     }
   }
 
   void chooseWinner(char player, char computer) {
     switch (player) {
-      case 'r':
-        winner::r(computer);
-        break;
-      case 'p':
-        winner::p(computer);
-        break;
-      case 's':
-        winner::s(computer);
-        break;
+    case 'r': winner::r(computer); break;
+    case 'p': winner::p(computer); break;
+    case 's': winner::s(computer); break;
     }
   }
 } // namespace rps

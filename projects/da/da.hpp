@@ -27,21 +27,23 @@ typedef decltype(sizeof(0)) size_t;
 extern EFI_SYSTEM_TABLE* SystemTable;
 
 extern "C" {
-inline void* __da_uefi_allocate(size_t size) {
-  if (size == 0) { size = 1; }
-  void* buffer = nullptr;
+  inline void* __da_uefi_allocate(size_t size) {
+    if (size == 0) { size = 1; }
+    void* buffer = nullptr;
 
-  if (SystemTable && SystemTable->BootServices) {
-    if (EFI_ERROR(SystemTable->BootServices->AllocatePool(EfiLoaderData, size, &buffer))) {
-      return nullptr;
+    if (SystemTable && SystemTable->BootServices) {
+      if (EFI_ERROR(SystemTable->BootServices->AllocatePool(EfiLoaderData, size, &buffer))) {
+        return nullptr;
+      }
+    }
+    return buffer;
+  }
+
+  inline void __da_uefi_deallocate(void* ptr) {
+    if (ptr && SystemTable && SystemTable->BootServices) {
+      SystemTable->BootServices->FreePool(ptr);
     }
   }
-  return buffer;
-}
-
-inline void __da_uefi_deallocate(void* ptr) {
-  if (ptr && SystemTable && SystemTable->BootServices) { SystemTable->BootServices->FreePool(ptr); }
-}
 }
 
 inline void* operator new(size_t size) { return __da_uefi_allocate(size); }
@@ -52,7 +54,8 @@ inline void operator delete(void* ptr, size_t) noexcept { return __da_uefi_deall
 inline void operator delete[](void* ptr, size_t) noexcept { return __da_uefi_deallocate(ptr); }
   #endif // __has_include(<efi.h>)
 
-template <typename T, size_t N = 0> class da {
+template <typename T, size_t N = 0>
+class da {
 private:
   T* a_data;                // Pointer to current active storage (stack buffer or heap)
   int a_size;               // Number of elements currently stored
