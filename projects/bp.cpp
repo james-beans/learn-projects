@@ -101,23 +101,23 @@ int main() {
     }
 
     switch (choice) {
-    case 1: b::showBalance(balance); break;
-    case 2:
-      depositAmount = b::deposit();
-      if (depositAmount > 0) {
-        balance += depositAmount;
-        b::showBalance(balance);
-      }
-      break;
-    case 3:
-      withdrawAmount = b::withDraw(balance);
-      if (withdrawAmount > 0) {
-        balance -= withdrawAmount;
-        b::showBalance(balance);
-      }
-      break;
-    case 4: cout << "\nThanks for visiting!\n"; break;
-    default: cout << "Invalid choice\n"; break;
+      case 1: b::showBalance(balance); break;
+      case 2:
+        depositAmount = b::deposit();
+        if (depositAmount > 0) {
+          balance += depositAmount;
+          b::showBalance(balance);
+        }
+        break;
+      case 3:
+        withdrawAmount = b::withDraw(balance);
+        if (withdrawAmount > 0) {
+          balance -= withdrawAmount;
+          b::showBalance(balance);
+        }
+        break;
+      case 4: cout << "\nThanks for visiting!\n"; break;
+      default: cout << "Invalid choice\n"; break;
     }
   } while (choice != 4);
 

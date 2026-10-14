@@ -40,32 +40,32 @@ int main() {
   string event;
 
   switch (num) {
-  case 1: event = "The sky turns a concerning shade of neon green."; break;
-  case 2: event = "Gravity abruptly reverses for the next 60 seconds."; break;
-  case 3: event = "A flock of sentient pigeons challenges you to a duel of wits."; break;
-  case 4: event = "You briefly transform into a highly flammable rubber chicken."; break;
-  case 5: event = "All non-essential doors in the vicinity spontaneously disappear."; break;
-  case 6:
-    event = "The ground beneath your feet begins singing a piercing Italian "
-            "opera aria.";
-    break;
-  case 7:
-    event = "Your entire inventory is instantly replaced by a large pile of "
-            "mismatched socks.";
-    break;
-  case 8:
-    event = "Time itself slows down to a quarter of its normal speed for one "
-            "minute.";
-    break;
-  case 9:
-    event = "A sudden, heavy rain of large, live fish begins falling from the "
-            "clouds.";
-    break;
-  case 10:
-    event = "You gain the temporary ability to hold meaningful conversations "
-            "with inanimate objects.";
-    break;
-  default: event = "A very rare, non-chaotic event occurred. Nothing happened (luckily)."; break;
+    case 1: event = "The sky turns a concerning shade of neon green."; break;
+    case 2: event = "Gravity abruptly reverses for the next 60 seconds."; break;
+    case 3: event = "A flock of sentient pigeons challenges you to a duel of wits."; break;
+    case 4: event = "You briefly transform into a highly flammable rubber chicken."; break;
+    case 5: event = "All non-essential doors in the vicinity spontaneously disappear."; break;
+    case 6:
+      event = "The ground beneath your feet begins singing a piercing Italian "
+              "opera aria.";
+      break;
+    case 7:
+      event = "Your entire inventory is instantly replaced by a large pile of "
+              "mismatched socks.";
+      break;
+    case 8:
+      event = "Time itself slows down to a quarter of its normal speed for one "
+              "minute.";
+      break;
+    case 9:
+      event = "A sudden, heavy rain of large, live fish begins falling from the "
+              "clouds.";
+      break;
+    case 10:
+      event = "You gain the temporary ability to hold meaningful conversations "
+              "with inanimate objects.";
+      break;
+    default: event = "A very rare, non-chaotic event occurred. Nothing happened (luckily)."; break;
   }
 
   cout << "Event: " << event << '\n';
