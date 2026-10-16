@@ -39,6 +39,9 @@ compile() {
   # projects/da/test.cpp
   clang++ -std=c++23 projects/da/test.cpp -Iprojects/da -o dist/da-test
 
+  # projects/pl/test.cpp
+  clang++ -std=c++23 projects/pl/test.cpp -Iprojects/pl -o dist/pl-test
+
   n && echo "Compiled all programs." && n
 }
 
