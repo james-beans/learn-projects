@@ -1,3 +1,6 @@
 [submodule "projects/pl"]
 	path = projects/pl
 	url = https://github.com/james-beans/pl.git
+[submodule "projects/da"]
+	path = projects/da
+	url = https://github.com/james-beans/da.git

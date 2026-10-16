@@ -19,5 +19,5 @@
 - [qg.cpp](./projects/qg.cpp)
 - [ccv.cpp](./projects/ccv.cpp)
 - [ttt.cpp](./projects/ttt.cpp)
-- [da](./projects/da/)
+- [da](https://github.com/james-beans/da)
 - [pl](https://github.com/james-beans/pl)
